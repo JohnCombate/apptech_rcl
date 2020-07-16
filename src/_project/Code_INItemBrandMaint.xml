@@ -1,0 +1,28 @@
+﻿<Graph ClassName="INItemBrandMaint" Source="#CDATA" IsNew="True" FileType="NewGraph">
+    <CDATA name="Source"><![CDATA[using System;
+using PX.Data;
+using PX.Objects.IN;
+
+namespace ItemBrand
+{
+	public class INItemBrandMaint : PXGraph<INItemBrandMaint>
+	{
+		public PXSave<INItemBrand> Save;
+		public PXCancel<INItemBrand> Cancel;
+
+        public PXSelect<INItemBrand> ItemBrands;
+
+        #region Event Handlers
+        public void INItemBrand_RowDeleting(PXCache cache, PXRowDeletingEventArgs e)
+        {
+            var row = (INItemBrand)e.Row;
+            if (row == null) return;
+
+            InventoryItem item = PXSelect<InventoryItem, Where<InventoryItemExtBrand.usrBrandID, Equal<Required<InventoryItemExtBrand.usrBrandID>>>>.Select(this, row.BrandID);
+            if (item != null)
+                throw new PXException(String.Format("Brand is assigned to {0}. It cannot be deleted.", item.InventoryCD));
+        }
+        #endregion
+    }
+}]]></CDATA>
+</Graph>

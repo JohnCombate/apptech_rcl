@@ -1,0 +1,15 @@
+﻿<Sql TableName="INItemBrand" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="INItemBrand">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="BrandID" type="Int" identity="true" />
+  <col name="BrandCD" type="NVarChar(15)" />
+  <col name="Description" type="NVarChar(50)" nullable="true" />
+  <col name="tstamp" type="Timestamp" />
+  <col name="CreatedByID" type="UniqueIdentifier" />
+  <col name="CreatedByScreenID" type="Char(8)" />
+  <col name="CreatedDateTime" type="DateTime" />
+  <col name="LastModifiedByID" type="UniqueIdentifier" />
+  <col name="LastModifiedByScreenID" type="Char(8)" />
+  <col name="LastModifiedDateTime" type="DateTime" />
+</table>]]></CDATA>
+</Sql>
